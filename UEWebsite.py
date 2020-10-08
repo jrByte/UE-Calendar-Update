@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup as bs
 
 def checkStatusCode(requestCode, url):
     if requestCode == 200:
-        print("[✔]: Successfully connected to " "+ url")
+        print("[✔]: Successfully connected to: " + url)
     else:
         print("[X]: Failed to connect, code response was [" + requestCode + "] with URL: " + url)
 
@@ -29,7 +29,8 @@ class main:
             # Connecting to the login page specified in the URL bellow.
             url = 'https://onlinecampus.bits-hochschule.de/scripts/mgrqispi.dll?APPNAME=CampusNet&PRGNAME=EXTERNALPAGES&ARGUMENTS=-N000000000000001,-N000299,-AHomedeWelcome'
             print("[!]: POST, Attempting to login.")
-            print("[!]: Note that if the KeyError is 'refresh'. Your username and password are either not entered or are incorrect.")
+            print(
+                "[!]: Note that if the KeyError is 'refresh'. Your username and password are either not entered or are incorrect.")
             login_data = {"usrname": self.username, "pass": self.password, "APPNAME": "CampusNet",
                           "PRGNAME": "LOGINCHECK",
                           "ARGUMENTS": "clino,usrname,pass,menuno,menu_type,browser,platform",
@@ -50,10 +51,19 @@ class main:
             dateCalendar = "01." + str(10) + ".2020"
             url = 'https://onlinecampus.bits-hochschule.de/scripts/mgrqispi.dll?APPNAME=CampusNet&PRGNAME=MONTH&ARGUMENTS=' + loginToken + ",-N000354,-A" + dateCalendar + ",-A,-N000000000000000"
 
-            # print("[✔]: URL Created: " + url)
-            site = request.get(url, headers=headers)
+            print("[✔]: Getting the month of:" + dateCalendar)
+            site = request.get(url, headers=headers, )
             checkStatusCode(site.status_code, url)
-            soup = bs(site.content, 'html5lib')
+
+            try:
+                # For windows computer
+                soup = bs(site.content, 'html5lib')
+                print("\n[✔]: Running lxml parsing.\n")
+            except:
+                # For mac computer
+                soup = bs(site.content, 'lxml')
+                print("\n[✔]: Running lxml parsing.\n")
+
             number = 0
 
             specificMonth = soup.findAll("tr", class_="")
@@ -71,7 +81,7 @@ class main:
                         for linkParsed in link:
                             number = number + 1
                             linkParsed = str(linkParsed.get("title"))
-                            print("[!]: This link is being parsed: ", str(linkParsed))
+                            print("[✔]: This link is being parsed: ", str(linkParsed))
                             Index = linkParsed.find('/')
                             timeRange = linkParsed[:Index - 1]
                             linkParsed = linkParsed[Index + 2:]
@@ -87,14 +97,17 @@ class main:
                             # OMG I found the bug here vvv, the mistake made : self.dict[className] = {}
                             # Reason why its a bug? It's because if there is more than one class with the same name it
                             # will overwrite the other saved version of so called class. Solution: Just iterate by numbers per day.
+
                             numberDict = str(number)
                             self.dict[numberDict] = {}
                             self.dict[numberDict]['ClassName'] = className
                             self.dict[numberDict]['RoomNumber'] = roomNumber
                             self.dict[numberDict]['TimeRange'] = timeRange
                             self.dict[numberDict]['Date'] = date
-                            print("[!]: Printing Date: ", date)
-                            print("[!]: Number: ", number)
+
+                            # Good for checking if the data is flowing correctly.
+                            # print("[!]: Printing Date: ", date)
+                            # print("[!]: Number: ", number)
 
 
 if __name__ == "__main__":

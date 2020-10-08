@@ -19,7 +19,7 @@ def reformatDate(text):
     text = text[Index + 1:]
     year = text
 
-    print("Day: ", day, "Month: ", month, "Year: ", year)
+    # print("Day: ", day, "Month: ", month, "Year: ", year)
     finalDate = str(day) + "/" + str(month) + "/" + str(year)
     return finalDate
     # Needs to return "05/30/2020"
@@ -27,15 +27,15 @@ def reformatDate(text):
 
 def startTime(text):
     index = text.find("-")
-    text = text[:index-1]
-    print (text)
+    text = text[:index - 1]
+    # print (text)
     return str(text)
 
 
 def endTime(text):
     index = text.find("-")
-    text = text[index+2:]
-    print (text)
+    text = text[index + 2:]
+    # print (text)
     return str(text)
 
 
@@ -61,12 +61,18 @@ class main:
             date = reformatDate(str(ue.dict[key]["Date"]))
             classStartTime = startTime(ue.dict[key]["TimeRange"])
             classEndTime = endTime(ue.dict[key]["TimeRange"])
-            print(date)
+            # print(date)
 
             # Writing the CSV File.
-            employee_writer.writerow([str(ue.dict[key]["ClassName"]), date, classStartTime, date, classEndTime, False
-                                         , ue.dict[key]["RoomNumber"], 'Dessauer Street 5, 10963 Berlin', True])
+            if ue.dict[key]["RoomNumber"] == "Online Class":
+                employee_writer.writerow([str(ue.dict[key]["ClassName"]), date, classStartTime, date, classEndTime, False
+                                             , ue.dict[key]["RoomNumber"], ue.dict[key]["RoomNumber"], True])
+            else:
+                employee_writer.writerow(
+                    [str(ue.dict[key]["ClassName"]), date, classStartTime, date, classEndTime, False
+                        , ue.dict[key]["RoomNumber"], 'Dessauer Street 5, 10963 Berlin', True])
 
 
 if __name__ == "__main__":
     session = main()
+    print("[✔]: Finished collecting and creating Claendar.csv ")

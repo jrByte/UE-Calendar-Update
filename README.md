@@ -4,10 +4,21 @@ This is an automated web scraping script. This will automatically log into Unive
 ## Table of Contents
 
 * [General info](#general-info)
+* [Requirements](#requirements)
 * [Technologies](#technologies)
 * [Future](#Future)
 
 ## General Info
+
+### Requirements:
+The program only requries you to type in your username and password in the following box.
+
+'''
+def __init__(self, username="", password=""):
+  self.username = username
+  self.password = password
+  self.dict = {}
+'''
 
 ## Technologies: 
 

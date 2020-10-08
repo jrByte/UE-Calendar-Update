@@ -16,7 +16,7 @@ Digital Transformation,	 1/10/2020,	8:30,	 1/10/2020,	10:45,	FALSE,	Online Class
 
 
 ### Requirements:
-The program only requries you to type in your username and password in the following box.
+The program only requires you to type in your username and password in the following box.
 ```
 def __init__(self, username="", password=""):
   self.username = username
@@ -25,11 +25,11 @@ def __init__(self, username="", password=""):
 ```
 
 ## Technologies: 
-Project was ceated with:
+Project was created with:
 * Python version: 3.7
 * unicodecsv version: 0.14.1
 * beautifulsoup4 version: 4.9.0
 * requests version: 2.23.0
 
 ## Future:
-From trial and error this is temporarily the best solution. Future changes can be made by using google calendar api. Currently the libraries aren't working with my python version.
+From trial and error this is temporarily the best solution. Future changes can be made by using google calendar api. Currently, the libraries aren't working with my python version.

@@ -1,4 +1,4 @@
-# UE-Calendar-Update
+# UE-Calendar-Scraper
 This is an automated web scraping script that will automatically log into University of Applied Sciences and download all the classes for that month. This will then write the data into a CSV file that can be exported to the desired calendar. Google calendar is recommended because not every calendar accepts csv files (apple calendar). If problems occur, feel free to notify me of the issue.
 
 [Google's guide to adding Calendar](https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=en)

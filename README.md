@@ -11,9 +11,19 @@ This is an automated web scraping script that will automatically log into Univer
 
 ## CSV File Example:
 
-Subject,	Start Date,	Start Time,	End Date,	End Time,	All Day, Event,	Description,	Location,	Private
-Digital Transformation,	 1/10/2020,	8:30,	 1/10/2020,	10:45,	FALSE,	Online Class,	Online Class,	TRUE
+Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description,Location,Private
 
+Corporate Management # HH + B, 1/12/2020,14:00, 1/12/2020,16:15,False,Online Class,Online Class,True
+
+Business English III: Case Studies, 1/12/2020,16:30, 1/12/2020,18:45,False,Online Class,Online Class,True
+
+Taxes, 2/12/2020,08:30, 2/12/2020,10:45,False,Online Class,Online Class,True
+
+Software Engineering Basics, 2/12/2020,11:00, 2/12/2020,13:15,False,B_A.01.61 (PC Pool 01),"Dessauer Street 5, 10963 Berlin",True
+
+Case Studies, 2/12/2020,14:00, 2/12/2020,16:15,False,B_A.02.53 (Seminarraum 06),"Dessauer Street 5, 10963 Berlin",True
+
+Digital Transformation, 3/12/2020,08:30, 3/12/2020,10:45,False,Online Class,Online Class,True
 
 ### Requirements:
 The program only requires you to type in your username and password in the following box.
